@@ -1,0 +1,527 @@
+#!/usr/bin/env bash
+# -*- ENCODING: UFT-8 -*-
+
+#[*] Name of the script: Droid-Info
+#[*] Description: "See More Information About the Operating System"
+#[*] Version: 2.0
+#[*] Author: JRIC2002
+#[*] Date of creation: 14/12/2018
+#[*] Date of last update: 30/08/2020
+
+#COLORS
+black='\033[1;30m'
+red='\033[1;31m'
+green='\033[1;32m'
+yellow='\033[1;33m'
+blue='\033[1;34m'
+magenta='\033[1;35m'
+cyan='\033[1;36m'
+white='\033[0m'
+
+function banner {
+	
+#BANNER
+
+printf "
+
+       $blue ____            _     _   $green ___        __
+       $blue|  _ \ _ __ ___ (_) __| |  $green|_ _|_ __  / _| ___
+       $blue| | | | '__/ _ \| |/ _' |   $green| || '_ \| |_ / _ *
+       $blue| |_| | | | (_) | | (_| |   $green| || | | |  _| (_) |
+       $blue|____/|_|  \___/|_|\__,_|  $green|___|_| |_|_|  \___/  v2.0
+
+               $cyan.:.:.$white Script encoded by: @JRIC2002 $cyan.:.:.$white
+$cyan.:.:.$white Description: See More Information About the Operating System$cyan .:.:.$white
+"
+}
+
+function disclaimer {
+
+setterm --background red
+
+printf "
+     :: Disclaimer: Developers assume no liability and are not    ::    
+     :: responsible for any misuse or damage caused by Droid-Info ::    "
+setterm --background black
+echo ""
+echo ""
+
+}
+
+#OPCIONES
+
+function opciones {
+
+sleep 1
+
+printf "$green[$white\e001$green]$yellow Informacion del Dispositivo$white"
+echo ""
+
+printf "$green[$white\e002$green]$yellow Estado de la Bateria$white"
+echo ""
+
+printf "$green[$white\e003$green]$yellow Informacion Camara$white"
+echo ""
+
+printf "$green[$white\e004$green]$yellow Informacion Contactos$white"
+echo ""
+
+printf "$green[$white\e005$green]$yellow Informacion de tu ISP$white"
+echo ""
+
+printf "$green[$white\e006$green]$yellow Informacion Volumen$white"
+echo ""
+
+printf "$green[$white\e007$green]$yellow Informacion Mensajes$white"
+echo ""
+
+printf "$green[$white\e008$green]$yellow Informacion Wifi$white"
+echo ""
+
+printf "$green[$white\e009$green]$yellow Abrir Navegador$white"
+echo ""
+
+printf "$green[$white\e010$green]$yellow Escanear Carpeta$white"
+echo ""
+
+printf "$green[$white\e011$green]$yellow Enviar Mensaje$white"
+echo ""
+
+printf "$green[$white\e012$green]$yellow Llamar$white"
+echo ""
+
+printf "$green[$white\e013$green]$yellow Reproducir Musica$white"
+echo ""
+
+printf "$green[$white\e014$green]$yellow Ubicacion del Dispositivo (Geolocalizacion)$white"
+echo ""
+
+printf "$green[$white\e015$green]$yellow Habilitar/Desabilitar Wifi$white"
+echo ""
+
+printf "$green[$white\e016$green]$yellow Ver Procesos del Sistema$white"
+echo ""
+
+printf "$green[$white\e099$green]$yellow Exit$white"              
+
+echo ""
+echo ""
+
+#ELIGE UNA OPCION
+
+printf "$green[$white\e0*$green]$green Choose an Option$white >>"
+read -p " " opcion
+
+#CONDICIONALES
+
+	if [ $opcion = "1" -o $opcion = "01" ]; then
+		clear 
+		banner
+		echo ""
+		printf "$blue >> INFORMACION DEL DISPOSITIVO:$white"
+		echo ""
+		echo ""
+		sleep 2
+
+		neofetch
+		
+		echo ""
+		printf "Presiona$yellow ENTER$white para volver al Menu..."
+		read -p ""
+		clear -x
+		banner
+		disclaimer
+		opciones
+
+	elif [ $opcion = "2" -o $opcion = "02" ]; then
+		clear 
+		banner
+		echo ""
+		printf "$blue >> ESTADO DE LA BATERIA:$white"
+		echo ""
+		echo ""
+		sleep 2
+
+		termux-battery-status
+
+		echo ""
+		echo ""
+		printf "Presiona$yellow ENTER$white para volver al Menu..."
+
+                read -p ""
+		clear -x
+		banner
+		disclaimer
+		opciones
+
+	elif [ $opcion = "3" -o $opcion = "03" ]; then
+		clear
+		banner
+		echo ""
+		printf "$blue >> INFO. DE LA CAMARA:$white"
+		echo ""
+		echo ""
+		sleep 2
+
+		termux-camera-info
+
+		echo ""
+		printf "Presiona$yellow ENTER$white para volver al Menu..."
+                read -p ""
+		clear -x 
+		banner
+		disclaimer
+		opciones
+
+	elif [ $opcion = "4" -o $opcion = "04" ]; then
+		clear 
+		banner 
+		echo ""
+		printf  "$blue >> LISTA DE CONTACTOS:$white"
+		echo ""
+		echo ""
+		sleep 2
+
+		termux-contact-list
+
+		echo ""
+		printf "Presiona$yellow ENTER$white para volver al Menu..."
+                read -p ""
+		clear -x
+		banner
+		disclaimer
+		opciones
+
+	elif [ $opcion = "5" -o $opcion = "05" ]; then
+		clear
+		banner
+		echo ""
+		printf "$blue >> INFO. DE TU ISP(Proveedor de Servios de Internet:$white"
+		echo ""
+		echo ""
+		sleep 2
+
+		termux-telephony-deviceinfo
+
+		echo ""
+		printf "Presiona$yellow ENTER$white para volver al Menu..."
+                read -p ""
+		clear -x
+		banner
+		disclaimer
+		opciones
+
+	elif [ $opcion = "6" -o $opcion = "06" ]; then
+		clear
+		banner
+		echo ""
+		printf "$blue >> INFO. DEL VOLUMEN DE TU DISPOSITIVO:$white"
+		echo ""
+		echo ""
+		sleep 2
+		
+		termux-volume
+
+		echo ""
+		printf "Presiona$yellow ENTER$white para volver al Menu..."
+                read -p ""
+		clear -x 
+		banner
+		disclaimer
+		opciones
+
+	elif [ $opcion = "7" -o $opcion = "07" ]; then
+		clear
+		banner
+		echo ""
+		printf "$blue >> LISTA DE MENSAJES:$white"
+		echo ""
+		echo ""
+		sleep 2
+
+		termux-sms-list
+
+		echo ""
+		printf "Presiona$yellow ENTER$white para volver al Menu..."
+                read -p ""
+		clear -x 
+		banner
+		disclaimer
+		opciones
+
+	elif [ $opcion = "8" -o $opcion = "08" ]; then
+		clear
+		banner
+		echo ""
+		printf "$blue >> INFO. DE TU RED WIFI:$white"
+		echo ""
+		echo ""
+		sleep 2
+
+		termux-wifi-connectioninfo
+
+		echo ""
+		printf "Presiona$yellow ENTER$white para volver al Menu..."
+                read -p ""
+		clear -x 
+		banner
+		disclaimer
+		opciones
+
+	elif [ $opcion = "9" -o $opcion = "09" ]; then
+		clear
+		banner
+		echo ""
+		printf "$blue >> NAVEGADOR:$white"
+		echo ""
+		echo ""
+		sleep 2
+
+		printf "$cyan[#]$green URL:$white"
+		read -p " " url
+		echo ""
+		printf "Abriendo URl..."
+		echo ""
+		sleep 1
+		termux-open $url
+
+		echo ""
+		printf "Presiona$yellow ENTER$white para volver al Menu..."
+                read -p ""
+		clear -x
+		banner
+		disclaimer
+		opciones
+
+	elif [ $opcion = "10" ]; then
+		clear
+		banner
+		echo ""
+		printf "$blue >> ESCANER DE CAPETAS:"
+		echo ""
+		sleep 2
+
+		printf "$cyan[#]$green Ruta de la Carpeta:$white"
+		read -p " " ruta_scan
+		echo ""
+		echo "Escaneando Carpeta..."
+		echo ""
+		sleep 2
+		termux-media-scan -r $ruta_scan
+
+		echo ""
+		printf "Presiona$yellow ENTER$white para volver al Menu..."                                                                             read -p ""
+		clear -x 
+		banner
+		disclaimer
+		opciones
+
+	elif [ $opcion = "11" ]; then
+		clear
+		banner
+		echo ""
+		printf "$blue >> ENVIAR MENSAJE:$white"
+		echo ""
+		echo ""
+		sleep 2
+
+		printf "$cyan[#]$green Destino (Numero):$white"
+		read -p " " numero
+		echo ""
+		printf "$cyan[#]$green Mensaje:$white"
+		read -p " " mensaje
+		echo ""
+		echo "Enviando Mensaje..."
+		echo ""
+		sleep 2
+
+		termux-sms-send -n $numero "$mensaje"
+		echo ""
+		printf "$green\eMensaje Enviado$white"
+		echo ""
+		echo ""
+
+		printf "Presiona$yellow ENTER$white para volver al Menu..."                                                            
+		read -p ""
+		clear -x 
+		banner
+		disclaimer
+		opciones
+
+	elif [ $opcion = "12" ]; then
+		clear 
+		banner
+		echo ""
+		printf "$blue >> LLAMAR:$white"
+		echo ""
+		echo ""
+		sleep 2
+
+		printf "$cyan[#]$green Numero a llamar:$white"
+		read -p " " numero_llamar
+		echo ""
+		echo "Llamando al numero $numero_llamar..."
+		sleep 2
+		termux-telephony-call $numero_llamar
+
+		echo ""
+		printf "Presiona$yellow ENTER$white para volver al Menu..."                                                            
+		read -p ""
+		clear -x
+		banner
+		disclaimer
+		opciones
+
+	elif [ $opcion = "13" ]; then
+		clear 
+		banner
+		echo ""
+		printf "$blue >> REPRODUCTOR DE MUSICA:$white"
+		echo ""
+		echo ""
+		printf "Reproduce archivos en formato $red.mp3$white y $red.mp4$white\n"
+		sleep 2
+		
+		echo ""
+		printf "$cyan[#]$green Ruta del Archivo:$white"
+		read -p " " ruta_musica
+		echo ""
+		sleep 1
+		echo "Reproduciendo Musica..."
+		echo ""
+		termux-media-player play $ruta_musica
+
+		echo ""
+		printf "Presiona$yellow ENTER$white para detener la musica..."
+		echo ""
+		read -p ""
+		termux-media-player stop
+		echo "Ok!"
+
+		echo ""
+		echo ""
+		printf "Presiona$yellow ENTER$white para volver al Menu..."                                                            
+		read -p ""
+		clear -x
+		banner
+		disclaimer
+		opciones
+
+	elif [ $opcion = "14" ]; then
+		clear 
+		banner
+		echo ""
+		printf "$blue >> GEOLOCALIZACION:$white"
+		echo ""
+		echo ""
+		sleep 2
+
+		printf "Localizando Dispositivo..."
+		echo ""
+
+		termux-location
+
+		echo ""
+		printf "Presiona$yellow ENTER$white para volver al Menu..."                                                          
+		read -p ""
+		clear -x
+		banner
+		disclaimer
+		opciones
+
+	elif [ $opcion = "15" ]; then
+		clear 
+		banner
+		echo ""
+		printf "$blue >> WIFI:$white"
+		echo ""
+		echo ""
+		sleep 2
+
+		printf "$cyan[#]$magenta Elige una opcion:$white"
+		echo ""
+		echo ""
+		printf "       $cyan[01]$green Activar$white"
+		echo ""
+		printf "       $cyan[02]$green Desactivar$white"
+		echo ""
+		printf "       $cyan[03]$green Volver Atras$white"
+		echo ""
+		echo ""
+		read -p "Opcion >> " opcion_wifi
+		sleep 2
+
+		if [ $opcion_wifi = "1" -o $opcion_wifi = "01" ]; then
+			termux-wifi-enable true
+			echo "Wifi ACTIVADO"
+
+			echo ""
+			echo ""
+			printf "Presiona$yellow ENTER$white para volver al Menu..."                                            
+			read -p ""
+			clear -x
+			banner
+			disclaimer
+			opciones
+
+		elif [ $opcion_wifi = "2" -o $opcion_wifi = "02" ]; then
+			termux-wifi-enable false
+			echo "Wifi DESACTIVADO"
+
+			echo ""
+			echo ""
+			printf "Presiona$yellow ENTER$white para volver al Menu..."                                            
+			read -p ""
+			clear -x 
+			banner
+			disclaimer
+			opciones
+		
+		elif [ $opcion_wifi = "3" -o $opcion_wifi = "03" ]; then
+			clear
+			banner
+			disclaimer
+			opciones
+		else
+			echo ""
+			printf "$red		     >> OPCION INCORRECTA <<$white
+		    VOLVERAS AL MENU PRINCIPAL"
+			sleep 3
+			clear
+			banner 
+			disclaimer
+			opciones
+		fi
+	
+	elif [ $opcion = "16" ]; then
+		clear 
+		htop
+
+		echo ""
+                printf "Presiona$yellow ENTER$white para volver al Menu..."
+		read -p ""
+		clear -x
+		banner
+		disclaimer
+		opciones
+
+	elif [ $opcion = "99" -o $opcion = "exit" ]; then
+
+		echo ""
+		printf "$red				Bye! $white"
+		echo ""
+		echo ""
+		exit
+
+	else 
+		clear
+		banner
+		disclaimer
+		opciones
+	fi
+
+}
+
+banner 
+disclaimer
+opciones
